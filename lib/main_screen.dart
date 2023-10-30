@@ -41,6 +41,15 @@ class MainScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 35, right: 10),
+                child: Expanded(
+                    flex: 1,
+                    child: Icon(
+                      Icons.navigate_next,
+                      size: 30,
+                    )),
               )
             ],
           ),
