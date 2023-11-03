@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wisatabogor/detail_screen.dart';
 import 'package:wisatabogor/main_screen.dart';
 
 void main() => runApp(const MyApp());
