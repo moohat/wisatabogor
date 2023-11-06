@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wisatabogor/main_screen.dart';
+import 'package:wisatabogor/splah_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Wisata Bogor',
       theme: ThemeData(),
       debugShowCheckedModeBanner: false,
-      home: const MainScreen(),
+      home: const SplashScreen(),
     );
   }
 }
