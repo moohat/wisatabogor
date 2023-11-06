@@ -12,7 +12,7 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Menu Utama")),
+        appBar: AppBar(title: Text("Menu Utama: Kalkulator Pajak")),
         body: GridView.count(
           primary: false,
           padding: const EdgeInsets.all(20),
@@ -34,7 +34,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     return MenuPph21();
                   }));
                 },
-                child: Text('Pph 21'),
+                child: Text('Kalkulator Pph 21'),
               )),
             ),
           ],

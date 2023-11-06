@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 class MenuPph21 extends StatelessWidget {
@@ -8,9 +9,9 @@ class MenuPph21 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ini Menu PPh 21"),
+        title: const Text("ini Menu PPh 21"),
       ),
-      body: FirstScreenState(),
+      body: const FirstScreenState(),
     );
   }
 }
@@ -23,9 +24,11 @@ class FirstScreenState extends StatefulWidget {
 }
 
 class _FirstScreenState extends State<FirstScreenState> {
-  String _name = '';
   final _textController = TextEditingController();
-  int decimalDigit = 2;
+
+  int decimalDigit = 0;
+  String _name = '';
+  int _angka = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +39,9 @@ class _FirstScreenState extends State<FirstScreenState> {
           children: [
             TextField(
               controller: _textController,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
+              ],
               decoration: InputDecoration(
                   hintText: 'tulis gaji bruto Anda...',
                   labelText: 'Gaji Bruto',
@@ -57,6 +63,10 @@ class _FirstScreenState extends State<FirstScreenState> {
               onPressed: () {
                 setState(() {
                   _name = _textController.text;
+
+                  _angka = int.tryParse(_name) ?? 0;
+
+                  // print(_name.runtimeType);
                 });
               },
             ),
@@ -66,22 +76,30 @@ class _FirstScreenState extends State<FirstScreenState> {
               height: 20,
             ),
             Container(
-                width: 250,
-                height: 200,
-                // margin: EdgeInsets.only(top: 50),
-                decoration: BoxDecoration(
-                    // color: Colors.amber,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(15),
-                    ),
-                    border: Border.all(width: 5.0, color: Colors.black87)),
-                padding: EdgeInsets.all(16.0),
-                child: Text(
-                    'Gaji Bruto: ${CurrencyFormat.convertToIdr(int.parse(_name), 2)}'))
+              width: 250,
+              height: 200,
+              decoration: BoxDecoration(
+                  // color: Colors.amber,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(15),
+                  ),
+                  border: Border.all(width: 5.0, color: Colors.black87)),
+              padding: const EdgeInsets.all(16.0),
+              child:
+                  Text('gaji bruto: ${CurrencyFormat.convertToIdr(_angka, 2)}'),
+
+              // child: Text('ini gaji'),
+            )
           ],
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
   }
 }
 
