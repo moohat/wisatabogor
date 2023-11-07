@@ -25,10 +25,15 @@ class FirstScreenState extends StatefulWidget {
 
 class _FirstScreenState extends State<FirstScreenState> {
   final _textController = TextEditingController();
+  final _tunjanganController = TextEditingController();
+  final _bonusController = TextEditingController();
 
   int decimalDigit = 0;
   String _name = '';
   int _angka = 0;
+  String _tunjangan = '';
+  int _pajak = 0;
+  String _bonus = '';
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +42,7 @@ class _FirstScreenState extends State<FirstScreenState> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            //input gaji bruto
             TextField(
               controller: _textController,
               inputFormatters: <TextInputFormatter>[
@@ -57,14 +63,36 @@ class _FirstScreenState extends State<FirstScreenState> {
               //   });
               // },
             ),
+            // input tunjangan tetap lainnya
+            TextField(
+              controller: _tunjanganController,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
+              ],
+              decoration: InputDecoration(
+                  hintText: 'tunjangan tetap lainnya...',
+                  labelText: 'Tunjangan Tetap Lainnya',
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      _tunjanganController.clear();
+                    },
+                    icon: const Icon(Icons.clear),
+                  )),
+              // onChanged: (value) {
+              //   _tunjangan = int.parse(value);
+              // },
+            ),
+
             const SizedBox(height: 20),
             ElevatedButton(
               child: const Text('Submit'),
               onPressed: () {
                 setState(() {
                   _name = _textController.text;
+                  _tunjangan = _tunjanganController.text;
+                  _bonus = _bonusController.text;
 
-                  _angka = int.tryParse(_name) ?? 0;
+                  _angka = int.tryParse(_name)! + int.tryParse(_tunjangan)!;
 
                   // print(_name.runtimeType);
                 });
@@ -95,6 +123,12 @@ class _FirstScreenState extends State<FirstScreenState> {
       ),
     );
   }
+
+  // void _hitungPajak() {
+  //   _pajak = _angka + _tunjangan;
+  //   _pajak =
+  //       CurrencyFormat.convertToIdr(int.tryParse(_pajak as String), 2) as int;
+  // }
 
   @override
   void dispose() {

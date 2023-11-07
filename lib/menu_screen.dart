@@ -12,32 +12,147 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Menu Utama: Kalkulator Pajak")),
-        body: GridView.count(
-          primary: false,
-          padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 2,
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.teal[100],
-              child: Center(
-                  child: TextButton(
-                style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
+      appBar: AppBar(title: Text("Menu Utama: Kalkulator Pajak")),
+      body: GridView.count(
+        //mengatur jumlah kotak per baris
+        crossAxisCount: 3,
+        //mengatur jarak padding ketepi
+        padding: EdgeInsets.all(20.0),
+        //mengatur spasi ke samping
+        crossAxisSpacing: 10,
+        //spasi ke bawah
+        mainAxisSpacing: 10,
+        children: [
+          //PPh21
+          ElevatedButton(
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Image.asset('assets/images/image2.png'),
+                Icon(
+                  Icons.calculate,
+                  size: 50.0,
                 ),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return MenuPph21();
-                  }));
-                },
-                child: Text('Kalkulator Pph 21'),
-              )),
+                SizedBox(height: 10),
+                Text(
+                  'Kalkulator PPh 21',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
-          ],
-        ));
+            onPressed: () {
+              //pindah halaman ke halaman kalkulator Pph21
+              Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        MenuPph21(),
+                    transitionDuration: Duration(seconds: 1),
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) {
+                      // Gunakan animasi fade in/out untuk transisi halaman
+                      return SlideTransition(
+                        // opacity: animation,
+                        position: animation.drive(Tween<Offset>(
+                            begin: Offset(0, 1), end: Offset(0, 0))),
+                        child: child,
+                      );
+                    },
+                  ));
+            },
+          ),
+          //Pph22
+          ElevatedButton(
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Image.asset('assets/images/image2.png'),
+                Icon(
+                  Icons.calculate,
+                  size: 50.0,
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Kalkulator PPh 22',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+            onPressed: () {
+              print('Button 2 ditekan');
+            },
+          ),
+
+          //Pph23
+          ElevatedButton(
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Image.asset('assets/images/image2.png'),
+                Icon(
+                  Icons.calculate,
+                  size: 50.0,
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Kalkulator PPh 23',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+            onPressed: () {
+              print('Button 2 ditekan');
+            },
+          ),
+          //Pph24
+          ElevatedButton(
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Image.asset('assets/images/image2.png'),
+                Icon(
+                  Icons.calculate,
+                  size: 50.0,
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Kalkulator PPh 24',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+            onPressed: () {
+              print('Button 2 ditekan');
+            },
+          ),
+          //Pph25
+          ElevatedButton(
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Image.asset('assets/images/image2.png'),
+                Icon(
+                  Icons.calculate,
+                  size: 50.0,
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Kalkulator PPh 25',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+            onPressed: () {
+              print('Button 2 ditekan');
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
