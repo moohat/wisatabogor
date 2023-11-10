@@ -48,7 +48,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   PageRouteBuilder(
                     pageBuilder: (context, animation, secondaryAnimation) =>
                         MenuPph21(),
-                    transitionDuration: Duration(seconds: 1),
+                    transitionDuration: Duration(milliseconds: 500),
                     transitionsBuilder:
                         (context, animation, secondaryAnimation, child) {
                       // Gunakan animasi fade in/out untuk transisi halaman
@@ -68,6 +68,7 @@ class _MenuScreenState extends State<MenuScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Image.asset('assets/images/image2.png'),
+
                 Icon(
                   Icons.calculate,
                   size: 50.0,
