@@ -12,12 +12,12 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Menu Utama: Kalkulator Pajak")),
+      appBar: AppBar(title: const Text("Menu Utama: Kalkulator Pajak")),
       body: GridView.count(
         //mengatur jumlah kotak per baris
         crossAxisCount: 3,
         //mengatur jarak padding ketepi
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         //mengatur spasi ke samping
         crossAxisSpacing: 10,
         //spasi ke bawah
@@ -47,7 +47,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   context,
                   PageRouteBuilder(
                     pageBuilder: (context, animation, secondaryAnimation) =>
-                        MenuPph21(),
+                        const MenuPph21(),
                     transitionDuration: Duration(milliseconds: 500),
                     transitionsBuilder:
                         (context, animation, secondaryAnimation, child) {

@@ -9,7 +9,7 @@ class MenuPph21 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("ini Menu PPh 21"),
+        title: const Text("Menu PPh 21"),
       ),
       body: const FirstScreenState(),
     );
@@ -40,85 +40,87 @@ class _FirstScreenState extends State<FirstScreenState> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            //input gaji bruto
-            TextField(
-              controller: _textController,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],
-              decoration: InputDecoration(
-                  hintText: 'tulis gaji bruto Anda...',
-                  labelText: 'Gaji Bruto',
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      _textController.clear();
-                    },
-                    icon: const Icon(Icons.clear),
-                  )),
-              // onChanged: (String value) {
-              //   setState(() {
-              //     _name = value;
-              //   });
-              // },
-            ),
-            // input tunjangan tetap lainnya
-            TextField(
-              controller: _tunjanganController,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],
-              decoration: InputDecoration(
-                  hintText: 'tunjangan tetap lainnya...',
-                  labelText: 'Tunjangan Tetap Lainnya',
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      _tunjanganController.clear();
-                    },
-                    icon: const Icon(Icons.clear),
-                  )),
-              // onChanged: (value) {
-              //   _tunjangan = int.parse(value);
-              // },
-            ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              //input gaji bruto
+              TextField(
+                controller: _textController,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                decoration: InputDecoration(
+                    hintText: 'tulis gaji bruto Anda...',
+                    labelText: 'Gaji Bruto',
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        _textController.clear();
+                      },
+                      icon: const Icon(Icons.clear),
+                    )),
+                // onChanged: (String value) {
+                //   setState(() {
+                //     _name = value;
+                //   });
+                // },
+              ),
+              // input tunjangan tetap lainnya
+              TextField(
+                controller: _tunjanganController,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                decoration: InputDecoration(
+                    hintText: 'tunjangan tetap lainnya...',
+                    labelText: 'Tunjangan Tetap Lainnya',
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        _tunjanganController.clear();
+                      },
+                      icon: const Icon(Icons.clear),
+                    )),
+                // onChanged: (value) {
+                //   _tunjangan = int.parse(value);
+                // },
+              ),
 
-            const SizedBox(height: 20),
-            ElevatedButton(
-              child: const Text('Submit'),
-              onPressed: () {
-                setState(() {
-                  _name = _textController.text;
-                  _tunjangan = _tunjanganController.text;
-                  _bonus = _bonusController.text;
+              const SizedBox(height: 20),
+              ElevatedButton(
+                child: const Text('Submit'),
+                onPressed: () {
+                  setState(() {
+                    _name = _textController.text;
+                    _tunjangan = _tunjanganController.text;
+                    _bonus = _bonusController.text;
 
-                  _angka = int.tryParse(_name)! + int.tryParse(_tunjangan)!;
+                    _angka = int.tryParse(_name)! + int.tryParse(_tunjangan)!;
 
-                  // print(_name.runtimeType);
-                });
-              },
-            ),
+                    // print(_name.runtimeType);
+                  });
+                },
+              ),
 
-            //display text
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: 250,
-              height: 200,
-              decoration: BoxDecoration(
-                  // color: Colors.amber,
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(15),
-                  ),
-                  border: Border.all(width: 5.0, color: Colors.black87)),
-              padding: const EdgeInsets.all(16.0),
-              child:
-                  Text('gaji bruto: ${CurrencyFormat.convertToIdr(_angka, 2)}'),
+              //display text
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: 250,
+                height: 200,
+                decoration: BoxDecoration(
+                    // color: Colors.amber,
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(15),
+                    ),
+                    border: Border.all(width: 5.0, color: Colors.black87)),
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                    'gaji bruto: ${CurrencyFormat.convertToIdr(_angka, 2)}'),
 
-              // child: Text('ini gaji'),
-            )
-          ],
+                // child: Text('ini gaji'),
+              )
+            ],
+          ),
         ),
       ),
     );
